@@ -1,0 +1,443 @@
+/* Core Styles for EliteTech Laptops */
+
+/* --- Variables --- */
+:root {
+    --color-midnight-blue: #0f172a; /* Main body background */
+    --color-header-scrolled: #1b283c; /* A distinct, slightly lighter dark blue for the scrolled header */
+    --color-platinum: #e2e8f0; /* Near white */
+    --color-jet-black: #1a1a1a; /* Used for sections background */
+    --color-electric-indigo-accent: #6366f1;
+    --color-electric-indigo-dark: #4f46e5; /* Slightly darker for hover */
+
+    --font-outfit: 'Outfit', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+
+    --transition-speed: 0.3s;
+    --border-radius-soft: 8px;
+    --shadow-soft: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    --shadow-elevated: rgba(0, 0, 0, 0.1) 0px 10px 30px 0px, rgba(0, 0, 0, 0.12) 0px 0px 0px 1px;
+}
+
+/* --- Global Resets & Box-sizing --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-inter);
+    color: var(--color-platinum);
+    background-color: var(--color-midnight-blue);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll from AOS */
+}
+
+/* --- Container for Centering Content --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-outfit);
+    color: var(--color-platinum);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h3 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+a {
+    color: var(--color-electric-indigo-accent);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--color-electric-indigo-dark);
+}
+
+/* --- Section Spacing --- */
+section {
+    padding: 80px 0;
+    position: relative;
+    z-index: 1; /* Ensure content is above any background elements */
+}
+
+/* --- Preloader --- */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-midnight-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Styling for the preloader text logo */
+.preloader-text-logo {
+    font-family: var(--font-outfit); /* Use the logo font */
+    font-size: 4rem; /* Larger size for preloader prominence */
+    font-weight: 700; /* Bolder */
+    background: linear-gradient(135deg, #FFD700, #DAA520, #000000); /* Golden to Black gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Fallback */
+    filter: drop-shadow(2px 2px 10px rgba(0,0,0,0.7)); /* Stronger shadow for depth */
+    animation: fadeInOutLogo 3s ease-in-out forwards; /* Reuse animation */
+}
+
+@keyframes fadeInOutLogo {
+    0% { opacity: 0; transform: translateY(20px); }
+    25% { opacity: 1; transform: translateY(0); }
+    75% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* --- Header --- */
+.main-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: transparent; /* Initially transparent */
+    padding: 20px 0;
+    z-index: 1000; /* High z-index to ensure it's always on top */
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.main-header.scrolled {
+    /* Final adjustments for a distinct, non-transparent header */
+    background-color: var(--color-header-scrolled); /* Solid, distinct dark blue */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4); /* Clear shadow below */
+    backdrop-filter: none; /* No backdrop-filter for a solid look */
+    -webkit-backdrop-filter: none; /* No backdrop-filter for Safari */
+    border-bottom: 1px solid rgba(226, 232, 240, 0.15); /* Subtle but clear bottom border */
+    /* No border-top needed as it's sticky at the very top */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Allow space for the cart icon */
+    position: relative; /* Needed for absolute positioning of cart if desired later */
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: var(--font-outfit);
+    font-weight: 600;
+}
+
+/* Styling for the text logo (header and preloader now share this base) */
+.logo-link.text-logo .logo-text {
+    font-size: 2.2rem; /* Larger font size for the prominent text logo */
+    font-weight: 700; /* Bolder */
+    background: linear-gradient(135deg, #FFD700, #DAA520, #000000); /* Golden to Black gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Fallback for browsers not supporting -webkit-text-fill-color */
+    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.5)); /* Adds a subtle shadow for depth */
+    transition: all var(--transition-speed) ease; /* Smooth hover effect */
+}
+
+.logo-link.text-logo .logo-text:hover {
+    filter: drop-shadow(0 0 8px rgba(255,215,0,0.8)); /* Glow effect on hover */
+    transform: scale(1.02); /* Slight scale */
+}
+
+/* Removed image-specific logo styles */
+.header-logo {
+    display: none; /* Ensure the image logo is hidden if still present */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav .nav-link {
+    color: var(--color-platinum);
+    font-size: 1.1rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 5px; /* Space for underline */
+}
+
+.main-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-electric-indigo-accent);
+    transition: width var(--transition-speed) ease-out;
+}
+
+.main-nav .nav-link:hover::after,
+.main-nav .nav-link.active::after {
+    width: 100%;
+}
+
+/* --- NEW: Cart Icon Styling --- */
+.cart-icon-container {
+    position: relative; /* For positioning the count badge */
+    margin-left: 20px; /* Space from navigation links */
+}
+
+.cart-icon-container .nav-link {
+    display: flex;
+    align-items: center;
+    color: var(--color-platinum); /* Icon color */
+    font-size: 1.4rem; /* Icon size */
+    padding: 0; /* Remove default padding from nav-link */
+}
+
+.cart-icon-container .nav-link:hover {
+    color: var(--color-electric-indigo-accent); /* Hover color for icon */
+}
+
+.cart-count {
+    background-color: var(--color-electric-indigo-accent); /* Badge background */
+    color: white; /* Badge text color */
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 50%; /* Circular badge */
+    padding: 2px 6px; /* Adjust padding to make it a nice circle/oval */
+    position: absolute;
+    top: -8px; /* Adjust vertical position */
+    right: -10px; /* Adjust horizontal position */
+    min-width: 20px; /* Ensure it's not too small for single digits */
+    text-align: center;
+    line-height: 1; /* Keep text centered vertically */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: calc(100vh - 80px); /* Adjust based on header height */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: linear-gradient(to bottom, var(--color-midnight-blue) 0%, var(--color-jet-black) 100%);
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px; /* Crucial: Offset for sticky header to prevent content overlap */
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: var(--color-platinum);
+    opacity: 0.9;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 1;
+    position: relative;
+    padding-right: 20px; /* Adjust spacing */
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
+}
+
+/* --- Sections Styles (General) --- */
+.featured-products-section,
+.about-section,
+.contact-section {
+    background-color: var(--color-jet-black); /* Darker background for content sections */
+    border-top: 1px solid rgba(226, 232, 240, 0.1); /* Subtle separator */
+}
+
+.about-section p, .contact-section p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.contact-info {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--color-jet-black);
+    color: var(--color-platinum);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(226, 232, 240, 0.1);
+}
+
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: var(--color-platinum);
+    margin: 0 15px;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: var(--color-electric-indigo-accent);
+}
+
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .main-nav ul {
+        flex-wrap: wrap; /* Allow nav items to wrap */
+        justify-content: center;
+    }
+    /* Adjust for cart icon on mobile */
+    .cart-icon-container {
+        margin-left: 0; /* Remove left margin on smaller screens */
+        margin-top: 10px; /* Add some top margin if it's in a column */
+    }
+
+    .hero-section {
+        flex-direction: column-reverse; /* Image above content on mobile */
+        text-align: center;
+        padding-top: 100px; /* Ensure sufficient padding for sticky header */
+        min-height: unset; /* Allow height to adjust */
+    }
+    .hero-content {
+        max-width: 100%;
+        padding-bottom: 50px;
+    }
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .hero-image {
+        padding-right: 0;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    .hero-image img {
+        max-width: 80%;
+    }
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    section {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-link.text-logo .logo-text,
+    .preloader-text-logo {
+        font-size: 1.8rem;
+    }
+    .main-nav ul {
+        gap: 15px; /* Reduce gap for smaller screens */
+    }
+    .main-nav .nav-link {
+        font-size: 1rem;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .btn {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    .contact-info p {
+        font-size: 1rem;
+    }
+}

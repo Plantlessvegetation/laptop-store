@@ -1,0 +1,570 @@
+/* Reusable UI Components for EliteTech Laptops */
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: var(--border-radius-soft);
+    font-family: var(--font-outfit);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    border: none; /* Remove default button border */
+    text-decoration: none; /* Ensure no underline on links acting as buttons */
+    box-shadow: var(--shadow-soft); /* Soft neomorphism base */
+}
+
+.btn-primary {
+    background-color: var(--color-electric-indigo-accent);
+    color: var(--color-platinum);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4); /* Stronger shadow for primary */
+}
+
+.btn-primary:hover {
+    background-color: var(--color-electric-indigo-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+}
+
+.btn-secondary { /* For "View Details" or "Add to Cart" */
+    background-color: transparent;
+    color: var(--color-electric-indigo-accent);
+    border: 2px solid var(--color-electric-indigo-accent);
+    box-shadow: none; /* No soft neomorphism initially */
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-electric-indigo-accent);
+    color: var(--color-platinum);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+/* --- Product Cards (Featured Products Section) --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    justify-content: center; /* Center items if they don't fill the grid */
+    padding: 20px 0;
+}
+
+.product-card {
+    background-color: rgba(30, 41, 59, 0.7); /* Slightly lighter Midnight Blue with transparency */
+    border-radius: var(--border-radius-soft);
+    padding: 25px;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    backdrop-filter: blur(8px); /* Glassmorphism effect */
+    border: 1px solid rgba(226, 232, 240, 0.1); /* Subtle border */
+    position: relative; /* For animations */
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-elevated);
+}
+
+.product-card-image {
+    width: 100%;
+    max-width: 250px; /* Constrain image width */
+    height: auto;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)); /* Soft shadow for laptop images */
+    transition: transform 0.4s ease; /* Smooth hover effect for image */
+}
+
+.product-card:hover .product-card-image {
+    transform: scale(1.03); /* Slight zoom on hover */
+}
+
+.product-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: var(--color-platinum);
+}
+
+.product-card .price {
+    font-family: var(--font-outfit);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-electric-indigo-accent);
+    margin-bottom: 25px;
+}
+
+.product-card-actions {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
+    margin-top: auto; /* Push to bottom */
+}
+
+.product-card-actions .btn {
+    flex: 1; /* Make buttons fill available space equally */
+    padding: 12px 20px; /* Slightly smaller buttons for cards */
+    font-size: 1rem;
+}
+
+
+/* --- Product Detail Page - Main Image and Thumbnails --- */
+.product-detail-layout {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start; /* Align top */
+    padding: 50px 0;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.product-image-gallery {
+    flex: 1;
+    min-width: 300px; /* Ensure images don't get too small */
+    max-width: 600px;
+    position: relative;
+    padding: 20px; /* Padding for potential zoom overflow */
+}
+
+.main-product-image-container {
+    width: 100%;
+    overflow: hidden; /* For zoom effect */
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-elevated);
+    position: relative;
+    background-color: var(--color-midnight-blue); /* Background for image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 16/9; /* Maintain aspect ratio */
+}
+
+.main-product-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.4s ease-out; /* Smooth zoom effect */
+    cursor: zoom-in; /* Indicate zoom capability */
+}
+
+.main-product-image-container:hover .main-product-image {
+    transform: scale(1.1); /* Gentle zoom on hover */
+    cursor: zoom-out; /* Indicate it's zoomed */
+}
+
+
+.product-thumbnails {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    justify-content: center; /* Center thumbnails */
+    flex-wrap: wrap;
+}
+
+.thumbnail-image {
+    width: 80px;
+    height: 60px; /* Fixed height for consistent look */
+    object-fit: contain; /* Ensure entire image is visible */
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    box-shadow: var(--shadow-soft);
+    background-color: rgba(30, 41, 59, 0.5); /* Subtle background */
+}
+
+.thumbnail-image:hover {
+    border-color: var(--color-electric-indigo-dark);
+    transform: translateY(-3px);
+}
+
+.thumbnail-image.active {
+    border-color: var(--color-electric-indigo-accent);
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+}
+
+
+.product-details-content {
+    flex: 2;
+    min-width: 300px; /* Ensure content doesn't get too small */
+}
+
+.product-details-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: var(--color-platinum);
+}
+
+.product-details-content .price {
+    font-family: var(--font-outfit);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-electric-indigo-accent);
+    margin-bottom: 30px;
+}
+
+.product-description {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--color-platinum);
+    margin-bottom: 30px;
+}
+
+.product-specs {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: rgba(30, 41, 59, 0.7); /* Glassmorphism background */
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(226, 232, 240, 0.1);
+}
+
+.product-specs h3 {
+    margin-bottom: 20px;
+    color: var(--color-platinum);
+    font-size: 1.8rem;
+}
+
+.product-specs ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px 30px;
+}
+
+.product-specs ul li {
+    font-size: 1.1rem;
+    color: var(--color-platinum);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.product-specs ul li strong {
+    color: var(--color-electric-indigo-accent);
+    min-width: 90px; /* Align content */
+    font-weight: 600;
+}
+
+.product-detail-actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+.product-detail-actions .btn {
+    flex: 1; /* Make buttons fill available space */
+    min-width: 200px; /* Prevent buttons from getting too small */
+}
+
+/* --- Breadcrumb Navigation --- */
+.breadcrumb {
+    padding: 20px 0;
+    font-size: 0.95rem;
+    color: var(--color-platinum);
+    opacity: 0.8;
+}
+
+.breadcrumb a {
+    color: var(--color-platinum);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--color-electric-indigo-accent);
+}
+
+.breadcrumb span {
+    margin: 0 8px;
+    color: var(--color-platinum);
+}
+
+.breadcrumb .current-page {
+    font-weight: 500;
+    color: var(--color-electric-indigo-accent);
+}
+
+
+/* --- Checkout Form Styles --- */
+.checkout-container {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: rgba(30, 41, 59, 0.7); /* Glassmorphism effect */
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-elevated);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(226, 232, 240, 0.1);
+    text-align: center;
+}
+
+.checkout-container h2 {
+    margin-bottom: 40px;
+    color: var(--color-platinum);
+    text-align: center;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: left; /* Align input and label */
+}
+
+.form-group label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: var(--color-platinum);
+    font-size: 1.1rem;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    opacity: 0.7;
+    z-index: 1; /* Ensure label is above input */
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(26, 26, 26, 0.6); /* Jet Black transparent */
+    border: 1px solid rgba(226, 232, 240, 0.2);
+    border-radius: var(--border-radius-soft);
+    color: var(--color-platinum);
+    font-size: 1.1rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative; /* For z-index context */
+    z-index: 2; /* Ensure input is above label for typing */
+}
+
+.form-group input:focus {
+    border-color: var(--color-electric-indigo-accent);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+/* Label animation for input focus/filled */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group input.has-content + label { /* Added has-content class for JS fill check */
+    top: -10px;
+    left: 10px;
+    font-size: 0.85rem;
+    color: var(--color-electric-indigo-accent);
+    background-color: var(--color-midnight-blue); /* Match background for floating effect */
+    padding: 0 5px;
+    opacity: 1;
+    z-index: 3; /* Bring label to front when floating */
+}
+
+
+.form-group .error-message {
+    color: #ef4444; /* Red for errors */
+    font-size: 0.9rem;
+    margin-top: 5px;
+    text-align: left;
+    height: 1.2em; /* Reserve space to prevent layout shift */
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.form-group .error-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.checkout-container .btn-primary {
+    width: 100%;
+    padding: 18px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.checkout-container .btn-primary:disabled {
+    background-color: rgba(99, 102, 241, 0.5);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+
+/* --- Thank You Page Styles --- */
+.thankyou-container {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 50px;
+    background-color: rgba(30, 41, 59, 0.7); /* Glassmorphism effect */
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-elevated);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(226, 232, 240, 0.1);
+    text-align: center;
+    position: relative; /* For confetti */
+    overflow: hidden; /* Ensure confetti doesn't overflow */
+}
+
+.thankyou-container h2 {
+    font-size: 3rem;
+    color: var(--color-electric-indigo-accent);
+    margin-bottom: 25px;
+}
+
+.thankyou-container p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--color-platinum);
+}
+
+.order-summary {
+    background-color: rgba(26, 26, 26, 0.6);
+    border-radius: var(--border-radius-soft);
+    padding: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(226, 232, 240, 0.1);
+    box-shadow: var(--shadow-soft);
+    text-align: left;
+}
+
+.order-summary h3 {
+    font-size: 1.8rem;
+    color: var(--color-platinum);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.order-summary p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.order-summary p strong {
+    color: var(--color-electric-indigo-accent);
+    font-weight: 600;
+}
+
+/* Confetti overlay (if using JS library) */
+.confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow interaction with elements behind it */
+    z-index: 10; /* Above other content, below modal/loader */
+}
+
+/* --- Media Queries for Responsiveness in Components --- */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* Stack cards on smaller screens */
+        padding: 0 20px;
+    }
+
+    .product-card {
+        margin-bottom: 20px; /* Add some space between stacked cards */
+    }
+
+    .product-detail-layout {
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px 20px;
+    }
+
+    .product-image-gallery {
+        max-width: 100%;
+        min-width: unset;
+        padding: 0;
+    }
+
+    .product-thumbnails {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .product-details-content {
+        min-width: unset;
+    }
+
+    .product-details-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .product-details-content .price {
+        font-size: 2rem;
+    }
+
+    .product-description {
+        font-size: 1rem;
+    }
+
+    .product-specs {
+        padding: 15px;
+    }
+
+    .product-specs ul {
+        grid-template-columns: 1fr; /* Stack specs on very small screens */
+        gap: 10px;
+    }
+    .product-specs ul li {
+        font-size: 1rem;
+    }
+
+    .product-detail-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .checkout-container, .thankyou-container {
+        margin: 40px 20px;
+        padding: 30px;
+    }
+
+    .checkout-container h2, .thankyou-container h2 {
+        font-size: 2.2rem;
+    }
+
+    .order-summary {
+        padding: 20px;
+    }
+    .order-summary h3 {
+        font-size: 1.6rem;
+    }
+    .order-summary p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .product-card h3 {
+        font-size: 1.4rem;
+    }
+    .product-card .price {
+        font-size: 1.5rem;
+    }
+    .product-card-actions .btn {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+
+    .thumbnail-image {
+        width: 70px;
+        height: 50px;
+    }
+
+    .checkout-container .btn-primary {
+        padding: 15px;
+        font-size: 1.1rem;
+    }
+}

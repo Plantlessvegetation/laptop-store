@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteTech - Secure Checkout</title>
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header" id="mainHeader">
+        <div class="container header-content">
+            <a href="index.html" class="logo-link text-logo">
+                <span class="logo-text">EliteTech</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#products-section" class="nav-link">Products</a></li>
+                    <li><a href="index.html#about-section" class="nav-link">About</a></li>
+                    <li><a href="index.html#contact-section" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="checkout-page-content">
+            <div class="container">
+                <div class="checkout-container" data-aos="zoom-in" data-aos-duration="800">
+                    <h2>Shipping Information</h2>
+                    <form id="checkoutForm">
+                        <div class="form-group">
+                            <input type="text" id="fullName" name="fullName" placeholder=" " required>
+                            <label for="fullName">Full Name</label>
+                            <div class="error-message" id="fullNameError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder=" " required>
+                            <label for="email">Email Address</label>
+                            <div class="error-message" id="emailError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder=" " pattern="[0-9]{10}" title="Phone number must be 10 digits" required>
+                            <label for="phone">Phone Number</label>
+                            <div class="error-message" id="phoneError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="address" name="address" placeholder=" " required>
+                            <label for="address">Shipping Address</label>
+                            <div class="error-message" id="addressError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" id="pincode" name="pincode" placeholder=" " pattern="[0-9]{6}" title="Pincode must be 6 digits" required>
+                            <label for="pincode">Pincode (e.g., 452001)</label>
+                            <div class="error-message" id="pincodeError"></div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="proceedToThankYou">Proceed to Order Summary</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 EliteTech. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-out-quad',
+        });
+    </script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

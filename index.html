@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteTech Laptops - Premium Devices</title>
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="preloader" id="preloader">
+        <span class="preloader-text-logo logo-text">EliteTech</span>
+    </div>
+
+    <header class="main-header" id="mainHeader">
+        <div class="container header-content">
+            <a href="index.html" class="logo-link text-logo">
+                <span class="logo-text">EliteTech</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="#products-section" class="nav-link">Products</a></li>
+                    <li><a href="#about-section" class="nav-link">About</a></li>
+                    <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon-container">
+                <a href="javascript:void(0)" id="cartLink" class="nav-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <h1>Unleash Your Potential.<br>Experience Elite Performance.</h1>
+                <p>Discover a curated collection of high-end laptops designed for ultimate power, precision, and elegance.</p>
+                <a href="#products-section" class="btn btn-primary">Explore Our Collection</a>
+            </div>
+            <div class="hero-image" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300">
+                <img src="assets/images/hero-laptop.png" alt="Premium Laptop Banner">
+            </div>
+        </section>
+
+        <section class="featured-products-section" id="products-section">
+            <div class="container">
+                <h2 data-aos="fade-up">Our Featured Laptops</h2>
+                <div class="product-grid" id="productGrid">
+                    </div>
+            </div>
+        </section>
+
+        <section class="about-section" id="about-section">
+            <div class="container" data-aos="fade-up">
+                <h2>About EliteTech</h2>
+                <p>At EliteTech, we believe in connecting you with technology that empowers. We meticulously select only the finest high-performance laptops, ensuring unparalleled quality, design, and reliability for professionals, creators, and gamers alike.</p>
+                <p>Our commitment is to provide a seamless shopping experience and dedicated support, helping you find the perfect machine to elevate your digital life.</p>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact-section">
+            <div class="container" data-aos="fade-up">
+                <h2>Get in Touch</h2>
+                <p>Have questions or need assistance? Our team is here to help.</p>
+                <div class="contact-info">
+                    <p>Email: <a href="mailto:support@elitetech.com">support@elitetech.com</a></p>
+                    <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                    <p>Address: 123 Tech Avenue, Silicon City, 00000</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 EliteTech. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true, // animations will only run once
+            duration: 800, // animation duration
+            easing: 'ease-out-quad', // easing for animations
+        });
+    </script>
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

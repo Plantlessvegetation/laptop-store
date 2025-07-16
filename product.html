@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">EliteTech Laptops - Product Details</title>
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header" id="mainHeader">
+        <div class="container header-content">
+            <a href="index.html" class="logo-link text-logo">
+                <span class="logo-text">EliteTech</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#products-section" class="nav-link active">Products</a></li>
+                    <li><a href="index.html#about-section" class="nav-link">About</a></li>
+                    <li><a href="index.html#contact-section" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="product-detail-page-content">
+            <div class="container">
+                <div class="breadcrumb" data-aos="fade-right">
+                    <a href="index.html">Home</a>
+                    <span>&gt;</span>
+                    <a href="index.html#products-section">Products</a>
+                    <span>&gt;</span>
+                    <span class="current-page" id="productNameBreadcrumb">Laptop Name</span>
+                </div>
+
+                <div class="product-detail-layout">
+                    <div class="product-image-gallery" data-aos="fade-right" data-aos-duration="800">
+                        <div class="main-product-image-container">
+                            <img src="assets/images/placeholder.jpg" alt="Main Product Image" class="main-product-image" id="mainProductImage">
+                        </div>
+                        <div class="product-thumbnails" id="productThumbnails">
+                            </div>
+                    </div>
+
+                    <div class="product-details-content" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+                        <h1 id="productNameDetail">Laptop Name</h1>
+                        <p class="price" id="productPrice">$0,000</p>
+                        <p id="productDescription" class="product-description">Discover the ultimate blend of performance and design with this premium laptop. Engineered for demanding tasks and immersive entertainment, it's the perfect companion for professionals and enthusiasts.</p>
+
+                        <div class="product-specs">
+                            <h3>Key Specifications</h3>
+                            <ul id="productSpecsList">
+                                </ul>
+                        </div>
+
+                        <div class="product-detail-actions">
+                            <button class="btn btn-secondary" id="addToCartBtn">Add to Cart</button>
+                            <button class="btn btn-primary" id="buyNowBtn">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 EliteTech. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-out-quad',
+        });
+    </script>
+    <script src="js/data.js"></script>
+    <script src="js/product.js"></script>
+</body>
+</html>
